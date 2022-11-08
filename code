@@ -1,1 +1,29 @@
+const windowW = 1200;
+const windowH = 500;
 
+function setup() {
+	createCanvas(windowW,windowH);
+	background(0,0,100);
+	rectMode(CENTER);
+}
+
+function draw(){
+	background(0,0,100);
+	fill(255);
+	textSize(100);
+	fill(0,200,200);
+	stroke(0,255,255);
+	strokeWeight(5);
+	text("Square of Luck",windowW/2-(windowW/4+50),windowH/2-windowH/4);//title
+	for(let i=1;i<5;i++){
+		rect(windowW/2,windowH/2+i*50,100,40)
+		strokeWeight(0);
+		fill(255);
+		textSize(30);
+		text(str(i)+"P", windowW/2-25,windowH/2+i*50+10)
+		textSize(100);
+		fill(0,200,200);
+		stroke(0,255,255);
+		strokeWeight(5);
+	}
+}
