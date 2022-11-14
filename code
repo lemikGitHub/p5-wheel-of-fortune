@@ -1,5 +1,9 @@
 const windowW = 1200;
 const windowH = 500;
+var stage = 0; //0: title screen, 
+var playerEnteringName = 1;
+
+//button positions: 
 
 function setup() {
 	createCanvas(windowW,windowH);
@@ -25,5 +29,11 @@ function draw(){
 		fill(0,200,200);
 		stroke(0,255,255);
 		strokeWeight(5);
+	}
+}
+
+function mousePressed(){
+	if (mouseX<=windowW/2+50&&mouseX>=windowW/2-50&&mouseY<=windowH/2&&mouseY>=windowH/2){
+		print("works")
 	}
 }
