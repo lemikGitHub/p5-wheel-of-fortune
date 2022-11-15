@@ -1,39 +1,54 @@
 const windowW = 1200;
 const windowH = 500;
-var stage = 0; //0: title screen, 
-var playerEnteringName = 1;
+var stage = 0; //0: title screen, 1: player names
+var playerCount = 0;
 
 //button positions: 
 
 function setup() {
-	createCanvas(windowW,windowH);
-	background(0,0,100);
+	createCanvas(windowW, windowH);
+	background(0, 0, 100);
 	rectMode(CENTER);
 }
 
-function draw(){
-	background(0,0,100);
+function draw() {
+	background(0, 0, 100);
 	fill(255);
 	textSize(100);
-	fill(0,200,200);
-	stroke(0,255,255);
+	fill(0, 200, 200);
+	stroke(0, 255, 255);
 	strokeWeight(5);
-	text("Square of Luck",windowW/2-(windowW/4+50),windowH/2-windowH/4);//title
-	for(let i=1;i<5;i++){
-		rect(windowW/2,windowH/2+i*50,100,40)
+	text("Square of Luck", windowW / 2 - (windowW / 4 + 50), windowH / 2 - windowH / 4); //title
+	for (let i = 1; i < 5; i++) {
+		rect(windowW / 2, windowH / 2 + i * 50, 100, 40)
 		strokeWeight(0);
 		fill(255);
 		textSize(30);
-		text(str(i)+"P", windowW/2-25,windowH/2+i*50+10)
+		text(str(i) + "P", windowW / 2 - 25, windowH / 2 + i * 50 + 10)
 		textSize(100);
-		fill(0,200,200);
-		stroke(0,255,255);
+		fill(0, 200, 200);
+		stroke(0, 255, 255);
 		strokeWeight(5);
 	}
 }
 
-function mousePressed(){
-	if (mouseX<=windowW/2+50&&mouseX>=windowW/2-50&&mouseY<=windowH/2&&mouseY>=windowH/2){
-		print("works")
+function mousePressed() {
+	if (mouseX <= windowW / 2 + 50 && mouseX >= windowW / 2 - 50) {
+		if (mouseY <= windowH / 2 + 50 + 20 && mouseY >= windowH / 2 + 50 - 20) {
+			playerCount = 1;
+			stage = 1
+		}
+		else if (mouseY <= windowH / 2 + 100 + 20 && mouseY >= windowH / 2 + 100 - 20) {
+			playerCount = 2;
+			stage = 1
+		}
+		else if (mouseY <= windowH / 2 + 150 + 20 && mouseY >= windowH / 2 + 150 - 20) {
+			playerCount = 3;
+			stage = 1
+		}
+		else if (mouseY <= windowH / 2 + 200 + 20 && mouseY >= windowH / 2 + 200 - 20) {
+			playerCount = 4;
+			stage = 1;
+		}
 	}
 }
