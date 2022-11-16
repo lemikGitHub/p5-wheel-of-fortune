@@ -1,18 +1,23 @@
 const windowW = 1200;
 const windowH = 500;
 var stage = 0; //0: title screen, 1: player names
+var players = []
 
 //stage1
 var playerCount = 0;
-var playerEnteringName=1;
-var player1,player2,player3,player4
-class player{
-	constructor(name,points,exists){
-		name="";
-		points=0;
-		exists=false
+var playerEnteringName = 1;
+class player {
+	constructor(name, points, exists) {
+		name = "";
+		points = 0;
+		exists = false
 	}
 }
+var p1 = new player([],0,false);
+var p2 = new player([],0,false);
+var p3 = new player([],0,false);
+var p4 = new player([],0,false);
+var players = [0,p1,p2,p3,p4];
 //button positions: 
 
 function setup() {
@@ -42,13 +47,13 @@ function draw() {
 			strokeWeight(5);
 		}
 	}
-	if(stage==1){
-		background(0,0,100)
+	if (stage == 1) {
+		background(0, 0, 100)
 		fill(0, 200, 200);
 		stroke(0, 255, 255);
 		strokeWeight(5);
 		textSize(50)
-		text("Player "+playerEnteringName+ " name:",windowW / 2 + (windowW / 4 -475), windowH / 2 - windowH / 4)
+		text("Player " + playerEnteringName + " name:", windowW / 2 + (windowW / 4 - 475), windowH / 2 - windowH / 4)
 		stroke(100)
 		fill(127.5);
 		rect(windowW / 2, windowH / 2 + 20, 500, 40);
@@ -69,6 +74,16 @@ function mousePressed() {
 		} else if (mouseY <= windowH / 2 + 200 + 20 && mouseY >= windowH / 2 + 200 - 20) {
 			playerCount = 4;
 			stage = 1;
+		}
+	}
+}
+
+function keyPressed() {
+	if (stage == 1) {
+		if (key >= "a" || key <= "z") {
+			players[playerEnteringName].name.push(key);
+
+			console.log(join(players[playerEnteringName].name))
 		}
 	}
 }
