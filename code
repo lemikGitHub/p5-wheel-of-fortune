@@ -1,6 +1,6 @@
 const windowW = 1200;
 const windowH = 500;
-var stage = 0; //0: title screen, 1: player names
+var stage = 0; //0: title screen, 1: player names, 2: points system
 var players = []
 
 //stage1
@@ -48,6 +48,9 @@ function draw() {
 		}
 	}
 	if (stage == 1) {
+		if(playerEnteringName>playerCount){
+			stage=2;
+		}
 		background(0, 0, 100)
 		fill(0, 200, 200);
 		stroke(0, 255, 255);
@@ -57,6 +60,12 @@ function draw() {
 		stroke(100)
 		fill(127.5);
 		rect(windowW / 2, windowH / 2 + 20, 500, 40);
+		fill(255);
+		textSize(17.5);
+		text(players[playerEnteringName].name, windowW/2-240,windowH/2+25);
+	}
+	if(stage==2){
+		clear();
 	}
 }
 
@@ -80,11 +89,11 @@ function mousePressed() {
 
 function keyPressed() {
 	if (stage == 1) {
-		if (key >= "a" || key <= "z" && key != "Enter") {
-			players[playerEnteringName].name.push(key);
-			console.log(join(players[playerEnteringName].name))
+		if (key >= "a" || key <= "z" && key != "Enter" && key != "Backspace" && key != "Shift" && key !="Tab") {
+			players[playerEnteringName].name += key;
 		}
 		else if(key == "Enter"){
+			print(players[playerEnteringName].name)
 			playerEnteringName+=1
 		}
 	}
