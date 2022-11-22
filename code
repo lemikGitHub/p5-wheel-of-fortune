@@ -48,8 +48,8 @@ function draw() {
 		}
 	}
 	if (stage == 1) {
-		if(playerEnteringName>playerCount){
-			stage=2;
+		if (playerEnteringName == playerCount + 1 || playerEnteringName == 5) {
+			stage = 2;
 		}
 		background(0, 0, 100)
 		fill(0, 200, 200);
@@ -62,10 +62,22 @@ function draw() {
 		rect(windowW / 2, windowH / 2 + 20, 500, 40);
 		fill(255);
 		textSize(17.5);
-		text(players[playerEnteringName].name, windowW/2-240,windowH/2+25);
+		if (playerEnteringName < 5) {
+			text(players[playerEnteringName].name, windowW / 2 - 240, windowH / 2 + 25);
+		}
 	}
-	if(stage==2){
-		clear();
+	if (stage == 2) {
+		background(0, 0, 100);
+		fill(255);
+		stroke(0);
+		for (let i = 1; i < players.length; i++) {
+			textSize(17.5);
+			text(players[i].name, i * 235, 400);
+			textSize(50);
+			if (players[i].exists) {
+				text(players[i].points, i * 235, 450);
+			}
+		}
 	}
 }
 
@@ -89,12 +101,12 @@ function mousePressed() {
 
 function keyPressed() {
 	if (stage == 1) {
-		if (key >= "a" || key <= "z" && key != "Enter" && key != "Backspace" && key != "Shift" && key !="Tab") {
+		if (key >= "a" || key <= "z" && key != "Enter" && key != "Backspace" && key != "Shift" && key != "Tab"&& key!="Control"&&key!="Alt"&&key!="CapsLock") {
 			players[playerEnteringName].name += key;
-		}
-		else if(key == "Enter"){
+		} else if (key == "Enter") {
 			print(players[playerEnteringName].name)
-			playerEnteringName+=1
+			players[playerEnteringName].exists=true;
+			playerEnteringName += 1
 		}
 	}
 }
