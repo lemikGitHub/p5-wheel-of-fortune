@@ -101,11 +101,11 @@ function mousePressed() {
 
 function keyPressed() {
 	if (stage == 1) {
-		if (key >= "a" || key <= "z" && key != "Enter" && key != "Backspace" && key != "Shift" && key != "Tab"&& key!="Control"&&key!="Alt"&&key!="CapsLock") {
+		if (key.match(/^[a-z0-9+-= ]$/i)) {
 			players[playerEnteringName].name += key;
 		} else if (key == "Enter") {
 			print(players[playerEnteringName].name)
-			players[playerEnteringName].exists=true;
+			players[playerEnteringName].exists = true;
 			playerEnteringName += 1
 		}
 	}
