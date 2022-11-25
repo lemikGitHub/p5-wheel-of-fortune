@@ -32,6 +32,9 @@ animals.words = ["Zebra", "Lion", "Giraffe", "Dog", "Pig", "Buffalo", "Tree Frog
 var furniture = new category();
 furniture.hint = "A piece of furniture"
 furniture.words = ["Couch", "Table", "Chair", "Desk", "Bookshelf"];
+var timesOfDay = new category();
+timesOfDay.hint = "A time of the day"
+timesOfDay.words = ["Morning","Daytime","Noon","Afternoon","Evening","Dawn","Dusk","Daybreak","Nightfall","Midnight","Nighttime","Sunrise","Sunset"]
 
 var guess = ""
 var prizePool = 0
@@ -133,6 +136,8 @@ function draw() {
 		textSize(75);
 		text(players[turn].name+"'s turn!",150, windowH / 2-(windowH/4));
 		text(hiddenWord,150, 400);
+		textSize(50)
+		text(categoryG.hint,150,480)
 	}
 }
 
@@ -165,7 +170,7 @@ function mousePressed() {
 	if (stage == 3&&s3db>100) {
 		stage = 4;
 		s3db=0;
-		categoryG = categories[Math.floor(random(0,categories.length+1))]
+		categoryG = categories[int(random(0,categories.length))]
 		print(categoryG)
 		cw=categoryG.words
 		ww = cw[Math.floor(random(0,cw.length))]
@@ -177,7 +182,7 @@ function mousePressed() {
 				hiddenWord.push(" ")
 			}
 		}
-		join(hiddenWord,"")
+		hiddenWord = join(hiddenWord," ")
 	}
 }
 
