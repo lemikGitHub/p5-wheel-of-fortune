@@ -274,6 +274,8 @@ function keyPressed() {
 					prizePool=0;
 					hiddenWord=""
 					guess=""
+				} else {
+					stage=4;
 				}
 		} else if (key == "Backspace") {
 			guess=""
