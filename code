@@ -17,7 +17,8 @@ var p1 = new player();
 var p2 = new player();
 var p3 = new player();
 var p4 = new player();
-var players = [0, p1, p2, p3, p4];
+var p5= new player();
+var players = [0, p1, p2, p3, p4, p5];
 //gameplay
 
 class category {
@@ -41,7 +42,7 @@ var prizePool = 0
 var categories = [animals, furniture, timesOfDay]
 var categoryG, wordG;
 var s3db = 0;
-var hiddenWord = [];
+var hiddenWord = "";
 
 var turn = 1
 
@@ -54,6 +55,9 @@ function setup() {
 }
 
 function draw() {
+	if(turn==5){
+		turn=1
+	}
 	if (stage == 0) {
 		background(0, 0, 100);
 		fill(255);
@@ -117,7 +121,7 @@ function draw() {
 	if (stage == 3) {
 		background(255, 255, 0);
 		if (prizePool == 0) {
-			prizePool = Math.floor(random(100, 901))
+			prizePool = Math.floor(random(100, 301))
 		}
 		fill(0);
 		stroke(127.5, 127.5, 0)
@@ -204,18 +208,11 @@ function mousePressed() {
 		stage = 4;
 		s3db = 0;
 		categoryG = categories[int(random(0, categories.length))]
-		print(categoryG)
 		cw = categoryG.words
 		ww = cw[Math.floor(random(0, cw.length))]
-		print(ww)
 		for (let i = 0; i < ww.length; i++) {
-			if (split(ww, "")[i] != " ") {
-				hiddenWord.push("_")
-			} else {
-				hiddenWord.push(" ")
-			}
+			hiddenWord+="_"
 		}
-		hiddenWord = join(hiddenWord, " ")
 	}
 	if (stage == 4) {
 		if (mouseX >= 900) {
@@ -233,7 +230,6 @@ function keyPressed() {
 		if (key.match(/^[a-z0-9+-= ]$/i)) {
 			players[playerEnteringName].name += key;
 		} else if (key == "Enter") {
-			print(players[playerEnteringName].name)
 			players[playerEnteringName].exists = true;
 			playerEnteringName += 1
 		} else if (key == "Backspace") {
@@ -246,12 +242,9 @@ function keyPressed() {
 				guess += key;
 			}
 		} else if (key == "Enter") {
-			print("debug 1")
 			var sww = split(ww, "")
 			for (let i = 0; i < ww.length; i++) {
-				print("debug 2")
 				if (sww[i] == guess) {
-					print("debug 3")
 					sword = split(hiddenWord, "")
 					sword[i] = guess;
 					hiddenWord = join(sword, "")
@@ -259,16 +252,31 @@ function keyPressed() {
 			}
 			stage = 4;
 			guess = ""
-			turn = turn + 1
-			print(turn)
-			if (players[turn].exists == false || turn== 4) {
-				turn = 1;
-			}
-			if(join(hiddenWord,"")==ww){
-				stage=3;
+			if(hiddenWord==ww){
+				stage=2;
 				players[turn].points+=prizePool
 				prizePool=0;
+				hiddenWord=""
 			}
+			turn = turn + 1
+			if (players[turn].exists == false||turn==5) {
+				turn = 1;
+			}
+		}
+	}
+	if (stage == 6) {
+		if (key.match(/^[a-z0-9+-= ]$/i)) {
+			guess += key;
+		} else if (key == "Enter") {
+				if(guess==ww){
+					stage=2;
+					players[turn].points+=prizePool
+					prizePool=0;
+					hiddenWord=""
+					guess=""
+				}
+		} else if (key == "Backspace") {
+			guess=""
 		}
 	}
 }
