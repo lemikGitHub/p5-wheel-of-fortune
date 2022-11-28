@@ -284,6 +284,7 @@ function keyPressed() {
 					if (players[turn].exists == false||turn==5) {
 						turn = 1;
 					}
+					guess=""
 				}
 		} else if (key == "Backspace") {
 			guess=""
