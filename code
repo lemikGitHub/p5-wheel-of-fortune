@@ -274,8 +274,16 @@ function keyPressed() {
 					prizePool=0;
 					hiddenWord=""
 					guess=""
+					turn = turn + 1
+					if (players[turn].exists == false||turn==5) {
+						turn = 1;
+					}
 				} else {
 					stage=4;
+					turn = turn + 1
+					if (players[turn].exists == false||turn==5) {
+						turn = 1;
+					}
 				}
 		} else if (key == "Backspace") {
 			guess=""
