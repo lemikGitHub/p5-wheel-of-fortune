@@ -268,7 +268,6 @@ function mousePressed() {
 			hardMode = false
 			stage = 2
 		}
-		print(hardMode)
 	}
 }
 
@@ -338,4 +337,3 @@ function keyPressed() {
 		}
 	}
 }
-
