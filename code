@@ -29,7 +29,7 @@ class category {
 }
 var animals = new category();
 animals.hint = "An Animal"
-animals.words = ["zebra", "lion", "giraffe", "dog", "pig", "buffalo", "treefrog"]
+animals.words = ["zebra", "lion", "giraffe", "dog", "pig", "buffalo", "tree Frog"]
 var furniture = new category();
 furniture.hint = "A piece of furniture"
 furniture.words = ["couch", "table", "chair", "desk", "bookshelf"];
@@ -43,7 +43,6 @@ var categories = [animals, furniture, timesOfDay]
 var categoryG, wordG;
 var s3db = 0;
 var hiddenWord = "";
-var hardMode = false;
 
 var turn = 1
 
@@ -177,30 +176,7 @@ function draw() {
 		text("Guess Word", windowW / 2 - (windowW / 4 + 50), windowH / 2 - windowH / 4); //title
 		text(guess, windowW / 2 - (windowW / 4 + 50), windowH / 2 + windowH / 4); //title
 	}
-	//if(stage==7){
-		//background(0, 0, 100);
-		//fill(255);
-		//textSize(100);
-		//fill(0, 200, 200);
-		//stroke(0, 255, 255);
-		//strokeWeight(5);
-		//text("Choose Difficulty", windowW / 2 - (windowW / 4 + 50), windowH / 2 - windowH / 4); //title
-		//fill(0,255,0)
-		//stroke(0,200,0)
-		//rect(windowW/2,windowH/2,300,83.3);
-		//fill(255)
-		//strokeWeight(0);
-		//textSize(50)
-		//text("Easy Mode",windowW/2-150,windowH/2+20)
-		//fill(255,0,0)
-		//stroke(200,0,0)
-		//strokeWeight(5);
-		//rect(windowW/2,windowH/4*3,300,83.3);
-		//fill(255)
-		//strokeWeight(0);
-		//text("Hard Mode",windowW/2-150,windowH/4*3+20)
-	//}
-//}
+}
 
 function mousePressed() {
 	if (stage == 0) {
@@ -220,20 +196,6 @@ function mousePressed() {
 			}
 		}
 	}
-	//if(stage==7){
-		//if (mouseX <= windowW / 2 + 150 && mouseX >= windowW / 2 - 150) {
-			//if (mouseY <= windowH / 2 +41.65 && mouseY >= windowH / 2 - 41.65) {
-				//hardMode=false
-				//stage=2;
-			//}
-		//}
-		//if (mouseX <= windowW / 2 + 150 && mouseX >= windowW / 2 - 150) {
-			//if (mouseY <= windowH / 4*3 +41.65 && mouseY >= windowH / 2 - 41.65) {
-				//hardMode=true
-				//stage=2;
-			//}
-		//}
-	//}
 	if (stage == 2) {
 		//windowW / 2, windowH / 2 - 100, 400, 100
 		if (mouseX <= windowW / 2 + 200 && mouseX >= windowW / 2 - 200) {
