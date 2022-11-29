@@ -199,8 +199,8 @@ function draw() {
 		//fill(255)
 		//strokeWeight(0);
 		//text("Hard Mode",windowW/2-150,windowH/4*3+20)
-	}
-}
+	//}
+//}
 
 function mousePressed() {
 	if (stage == 0) {
